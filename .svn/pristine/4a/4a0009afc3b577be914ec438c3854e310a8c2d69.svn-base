@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>FMS || Suncyb Infotech</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="assets/public/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/public/vendors/css/vendors.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/public/css/theme.min.css">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+<link rel="javascript" type="javascript" href="assets/public/vendors/js/vendors.min.js">
+<link rel="javascript" type="javascript" href="assets/public/vendors/js/apexcharts.min.js">
+<link rel="javascript" type="javascript" href="assets/public/vendors/js/circle-progress.min.js">
+<link rel="javascript" type="javascript" href="assets/public/js/common-init.min.js">
+<link rel="javascript" type="javascript" href="assets/public/js/dashboard-init.min.js">
+<link rel="javascript" type="javascript" href="assets/public/js/theme-customizer-init.min.js">
+</html>

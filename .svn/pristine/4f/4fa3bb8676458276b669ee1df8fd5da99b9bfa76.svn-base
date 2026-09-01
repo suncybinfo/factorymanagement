@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-branchmaster',
+  imports: [],
+  templateUrl: './branchmaster.html',
+  styleUrl: './branchmaster.css',
+})
+export class Branchmaster {}

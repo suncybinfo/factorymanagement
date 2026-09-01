@@ -1,0 +1,41 @@
+import { Routes } from '@angular/router';
+import { Login } from '../public/login/login';
+import { Forgotpassword } from '../public/forgotpassword/forgotpassword';
+import { Resetpassword } from '../public/resetpassword/resetpassword';
+import { Securelayout } from '../secure/layout/securelayout/securelayout';
+import { Dashboard } from '../secure/pages/dashboard/dashboard';
+import { AuthGuard } from '../secure/services/auth-guard';
+import { Companymaster } from '../secure/pages/master/companymaster/companymaster';
+import { Branchmaster } from '../secure/pages/master/branchmaster/branchmaster';
+import { Plantmaster } from '../secure/pages/master/plantmaster/plantmaster';
+import { Unitmaster } from '../secure/pages/master/unitmaster/unitmaster';
+import { Warehousemaster } from '../secure/pages/master/warehousemaster/warehousemaster';
+import { Departmentmaster } from '../secure/pages/master/departmentmaster/departmentmaster';
+import { Countrymaster } from '../secure/pages/master/countrymaster/countrymaster';
+import { Statemaster } from '../secure/pages/master/statemaster/statemaster';
+import { Districtmaster } from '../secure/pages/master/districtmaster/districtmaster';
+
+export const routes: Routes = [
+     { path: '', redirectTo: 'login', pathMatch: 'full' },
+     { path: 'login', component: Login },
+     { path: 'forgotpassword', component: Forgotpassword },
+     { path: 'resetpassword', component: Resetpassword },
+     {
+        path: 'secure',
+        component: Securelayout,
+        canActivate: [AuthGuard],
+        children: [
+            { path: 'dashboard', component: Dashboard },
+            { path: 'companymaster', component: Companymaster },
+            { path: 'branchmaster', component: Branchmaster },
+            { path: 'plantmaster', component: Plantmaster },
+            { path: 'warehousemaster', component: Warehousemaster },
+            { path: 'unitmaster', component: Unitmaster },
+            { path: 'departmentmaster', component: Departmentmaster },
+            { path: 'countrymaster', component: Countrymaster },
+            { path: 'statemaster', component: Statemaster },
+            { path: 'districtmaster', component: Districtmaster }
+        ]
+     },
+     { path: '**', redirectTo: 'login' }
+];

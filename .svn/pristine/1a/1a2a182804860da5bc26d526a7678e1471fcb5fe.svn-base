@@ -1,0 +1,4 @@
+.nxl-item.active > .nxl-link .nxl-arrow {
+    transform: rotate(90deg);
+    transition: .3s;
+}

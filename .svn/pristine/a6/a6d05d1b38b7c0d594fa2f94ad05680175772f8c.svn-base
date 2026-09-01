@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-warehousemaster',
+  imports: [],
+  templateUrl: './warehousemaster.html',
+  styleUrl: './warehousemaster.css',
+})
+export class Warehousemaster {}
