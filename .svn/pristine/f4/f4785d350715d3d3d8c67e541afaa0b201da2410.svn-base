@@ -1,9 +1,0 @@
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-unitmaster',
-  imports: [],
-  templateUrl: './unitmaster.html',
-  styleUrl: './unitmaster.css',
-})
-export class Unitmaster {}

@@ -1,0 +1,49 @@
+<div class="page-header">
+    <div class="page-header-left d-flex align-items-center">
+        <div class="page-header-title">
+            <h5 class="m-b-10">HR & Payroll</h5>
+        </div>
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/secure/dashboard']">Dashboard</a></li>
+            <li class="breadcrumb-item">Setting</li>
+        </ul>
+    </div>
+    <div class="page-header-right ms-auto">
+        <div class="page-header-right-items">
+            <div class="d-flex align-items-center gap-2 page-header-right-items-wrapper">
+                <div class="dropdown filter-dropdown">
+                    <a class="btn btn-primary" (click)="addRecord()"[class.disabled]="isButtonDisabled" [attr.aria-disabled]="isButtonDisabled" [style.pointer-events]="isButtonDisabled ? 'none' : 'auto'">
+                        <i class="feather-plus me-2"></i>
+                        <span>{{btnname}}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if(isform){
+    <div class="col-xl-12" style="padding: 10px 10px 0 10px;">
+        <div class="card stretch stretch-full">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <label class="form-label">Country Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Country Name">
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <label class="form-label">Country Code <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Country Code">
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+            <div class="d-flex justify-content-center gap-2 mt-3">
+                    <button class="btn btn-success">Submit</button>
+                    <button class="btn btn-primary">Reset</button>
+                    <button class="btn btn-danger" (click)="closedForm()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

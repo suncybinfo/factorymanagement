@@ -1,9 +1,0 @@
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-countrymaster',
-  imports: [],
-  templateUrl: './countrymaster.html',
-  styleUrl: './countrymaster.css',
-})
-export class Countrymaster {}

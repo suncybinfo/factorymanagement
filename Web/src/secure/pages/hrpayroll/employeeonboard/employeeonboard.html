@@ -1,0 +1,550 @@
+<div class="page-header">
+    <div class="page-header-left d-flex align-items-center">
+        <div class="page-header-title">
+            <h5 class="m-b-10">HR & Payroll</h5>
+        </div>
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/secure/dashboard']">Dashboard</a></li>
+            <li class="breadcrumb-item">Employee Onboarding</li>
+        </ul>
+    </div>
+    <div class="page-header-right ms-auto">
+        <div class="page-header-right-items">
+            <div class="d-flex align-items-center gap-2 page-header-right-items-wrapper">
+                <div class="dropdown filter-dropdown">
+                    <a class="btn btn-primary" (click)="addRecord()" [class.disabled]="isButtonDisabled"
+                        [attr.aria-disabled]="isButtonDisabled"
+                        [style.pointer-events]="isButtonDisabled ? 'none' : 'auto'">
+                        <i class="feather-plus me-2"></i>
+                        <span>{{btnname}}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if(isform){
+<div class="col-xl-12" style="padding: 10px 10px 0 10px;">
+    <div class="card stretch stretch-full">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <label class="form-label">Employee Id.</label>
+                    <input type="text" class="form-control" placeholder="Employee Id.">
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <label class="form-label">Employee Name</label>
+                    <input type="text" class="form-control" placeholder="Employee Name">
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <label class="form-label" style="color: #fff !important;">-</label>
+                    <button class="btn btn-primary" (click)="Search()">Search</button>
+                </div>
+            </div>
+
+
+            @if(isdisplayemployeegrid){
+
+            <div class="row dt-row">
+                <table class="table table-hover dataTable no-footer">
+                    <thead>
+                        <tr>
+                            <td>SR. No</td>
+                            <td>Full Name</td>
+                            <td>Father Name</td>
+                            <td>Mobile No</td>
+                            <td>PAN No.</td>
+                            <td>Aadhaar No.</td>
+                            <td>Status</td>
+                            <td>Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Chandan Kumar</td>
+                            <td>Arjun Prasad</td>
+                            <td>9582101727</td>
+                            <td>DWZPK7601D</td>
+                            <td>288004157578</td>
+                            <td>
+                                <div class="badge bg-soft-danger text-danger">Pending for Joining</div>
+                            </td>
+                            <td>
+                                <div class="hstack gap-2">
+                                    <div class="dropdown">
+                                        <a href="javascript:void(0)" class="avatar-text avatar-md"
+                                            data-bs-toggle="dropdown" data-bs-offset="0,21" aria-expanded="false">
+                                            <i class="feather feather-more-horizontal"></i>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a class="dropdown-item" (click)="onboardingemployeedetails()">
+                                                    <i class="feather feather-send me-3"></i>
+                                                    <span>Onboarding</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item">
+                                                    <i class="feather feather-edit-3 me-3"></i>
+                                                    <span>Edit Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item printBTN" href="javascript:void(0)">
+                                                    <i class="feather feather-printer me-3"></i>
+                                                    <span>Print Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="javascript:void(0)">
+                                                    <i class="feather feather-archive me-3"></i>
+                                                    <span>Archive</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+}
+@if(isdisplayemployeedetails){
+<div class="col-xl-12" style="padding: 10px 10px 0 10px;">
+    <div class="card stretch stretch-full">
+        <div class="card-header">
+            <h6 class="card-title mb-0">Employee Onboarding</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="card-body p-0">
+                    <div class="px-4 pt-4">
+                        <div class="d-md-flex align-items-center justify-content-between">
+                            <div class="mb-4 mb-md-0 your-brand">
+                                <div
+                                    class="wd-100 ht-100 position-relative overflow-hidden border border-gray-2 rounded">
+                                    <img src="assets/public/images/logo-abbr.png"
+                                        class="upload-pic img-fluid rounded h-100 w-100" alt="">
+                                    <div
+                                        class="position-absolute start-50 top-50 end-0 bottom-0 translate-middle h-100 w-100 hstack align-items-center justify-content-center c-pointer upload-button">
+                                        <i class="feather feather-camera" aria-hidden="true"></i>
+                                    </div>
+                                    <input class="file-upload" type="file" accept="image/*">
+                                </div>
+                                <div class="fs-12 text-muted mt-2">Upload Photo</div>
+                            </div>
+                            <div class="d-md-flex align-items-center justify-content-end gap-4">
+                                <!-- Date of Joining -->
+                                <div class="form-group mb-3 mb-md-0">
+                                    <label class="form-label">Date of Joining:</label>
+                                    <input type="date" id="dateOfJoining" class="form-control"
+                                        placeholder="Date of Joining...">
+                                </div>
+
+                                <!-- Department -->
+                                <div class="form-group mb-3 mb-md-0">
+                                    <label class="form-label">Department:</label>
+                                    <select class="form-control" id="department">
+                                        <option value="">--Select--</option>
+                                        <option value="HR">HR</option>
+                                        <option value="Finance">Finance</option>
+                                        <option value="IT">IT</option>
+                                    </select>
+                                </div>
+
+                                <!-- Designation -->
+                                <div class="form-group mb-3 mb-md-0">
+                                    <label class="form-label">Designation:</label>
+                                    <select class="form-control" id="designation">
+                                        <option value="">--Select--</option>
+                                        <option value="Manager">Manager</option>
+                                        <option value="Team Lead">Team Lead</option>
+                                        <option value="Software Engineer">Software Engineer</option>
+                                    </select>
+                                </div>
+
+                                <!-- Location -->
+                                <div class="form-group">
+                                    <label class="form-label">Location:</label>
+                                    <select class="form-control" id="location">
+                                        <option value="">--Select--</option>
+                                        <option value="New York">New York</option>
+                                        <option value="Los Angeles">Los Angeles</option>
+                                        <option value="Chicago">Chicago</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Overtime Eligibility:</label>
+                                    <select class="form-control" id="overtimeEligibility">
+                                        <option value="">--Select--</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="border-dashed">
+                    <p class="fw-bold d-flex align-items-center">Employee Basic Information</p>
+                    <div class="px-4 row justify-content-between">
+                        <div class="col-xl-3">
+                            <div class="form-group mb-3">
+                                <label class="form-label">Employee Full Name</label>
+                                <input type="text" class="form-control" id="InvoiceLabel"
+                                    placeholder="Employee Full Name">
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="form-group mb-3">
+                                <label for="InvoiceProduct" class="form-label">Father Name</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" placeholder="Father Name">
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="form-group mb-3">
+                                <label for="InvoiceProduct" class="form-label">Mother Name</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" placeholder="Mother Name">
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="form-group mb-3 mb-md-0">
+                                <label for="InvoiceProduct" class="form-label">Gender</label>
+                                <select class="form-control" id="InvoiceProduct">
+                                    <option selected value="">Choose Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="form-group mb-3 mb-md-0">
+                                <label for="InvoiceProduct" class="form-label">Marital Status</label>
+                                <select class="form-control" id="InvoiceProduct">
+                                    <option selected value="">--Select--</option>
+                                    <option value="Male">Married</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="form-group mb-3">
+                                <label for="InvoiceNumber" class="form-label">Spouse Name</label>
+                                <input type="text" class="form-control" id="InvoiceNumber" placeholder="Spouse Name">
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="form-group mb-3">
+                                <label for="InvoiceNumber" class="form-label">Mobile No.</label>
+                                <input type="text" class="form-control" id="InvoiceNumber" placeholder="Mobile No.">
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="form-group mb-3">
+                                <label for="InvoiceNumber" class="form-label">Alternate Mobile No.</label>
+                                <input type="text" class="form-control" id="InvoiceNumber"
+                                    placeholder="Alternate Mobile No.">
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="form-group mb-3">
+                                <label for="InvoiceProduct" class="form-label">Email Id.</label>
+                                <input type="email" class="form-control" id="InvoiceProduct"
+                                    placeholder="Email Address">
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="form-group mb-3">
+                                <label for="InvoiceProduct" class="form-label">PAN No.</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" placeholder="PAN Number">
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="form-group mb-3">
+                                <label for="InvoiceProduct" class="form-label">Aadhaar Number</label>
+                                <input type="text" class="form-control" id="InvoiceProduct"
+                                    placeholder="Aadhaar Number">
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="form-group mb-3">
+                                <label for="InvoiceProduct" class="form-label">Labour Card Number</label>
+                                <input type="text" class="form-control" id="InvoiceProduct"
+                                    placeholder="Labour Card Number">
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="border-dashed">
+                    <p class="fw-bold d-flex align-items-center">Employee Address</p>
+                    <div class="px-4 row justify-content-between">
+                        <p>Current Address</p>
+                        <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label class="form-label">State</label>
+                                <select class="form-control" id="InvoiceProduct">
+                                    <option selected value="">--Select--</option>
+                                    <option value="Male">Married</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label for="InvoiceProduct" class="form-label">District</label>
+                                <select class="form-control" id="InvoiceProduct">
+                                    <option selected value="">--Select--</option>
+                                    <option value="Male">Married</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="form-group mb-6">
+                                <label for="InvoiceProduct" class="form-label">Full Address</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" placeholder="Full Address">
+                            </div>
+                        </div>
+
+                        <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label for="InvoiceProduct" class="form-label">Pin Code</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" placeholder="Pin Code">
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <p>Permanent Address</p>
+                            <div class="form-group mb-12">
+                                <input type="checkbox" class="form-check-input" id="sameAsAbove">
+                                <label for="sameAsAbove" class="form-check-label"> Same as Above</label>
+                            </div>
+                        </div>
+                        <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label class="form-label">State</label>
+                                <select class="form-control" id="InvoiceProduct">
+                                    <option selected value="">--Select--</option>
+                                    <option value="Male">Married</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label for="InvoiceProduct" class="form-label">District</label>
+                                <select class="form-control" id="InvoiceProduct">
+                                    <option selected value="">--Select--</option>
+                                    <option value="Male">Married</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="form-group mb-6">
+                                <label for="InvoiceProduct" class="form-label">Full Address</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" placeholder="Full Address">
+                            </div>
+                        </div>
+
+                        <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label for="InvoiceProduct" class="form-label">Pin Code</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" placeholder="Pin Code">
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="border-dashed">
+                    <p class="fw-bold d-flex align-items-center">Highest Qualification</p>
+                    <div class="px-4 row justify-content-between">
+                        <div class="row dt-row">
+                            <table class="table table-hover dataTable no-footer">
+                                <thead>
+                                    <tr>
+                                        <td>SR. No</td>
+                                        <td>Highest Qualification</td>
+                                        <td>Board / University</td>
+                                        <td>Passing Year</td>
+                                        <td>Certificate</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Bachelor of Computer Applications</td>
+                                        <td>University of Delhi</td>
+                                        <td>2020</td>
+                                        <td>View</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <hr class="border-dashed">
+                    <p class="fw-bold d-flex align-items-center">Experience</p>
+                    <div class="px-4 row justify-content-between">
+                        <div class="row dt-row">
+                            <table class="table table-hover dataTable no-footer">
+                                <thead>
+                                    <tr>
+                                        <td>SR. No</td>
+                                        <td>Company Name</td>
+                                        <td>From</td>
+                                        <td>To</td>
+                                        <td>Experiance Letter</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Sun Tours</td>
+                                        <td>13/10/2018</td>
+                                        <td>19/11/2019</td>
+                                        <td>View</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <hr class="border-dashed">
+                    <p class="fw-bold d-flex align-items-center">Bank Account Details</p>
+                    <div class="px-4 row justify-content-between">
+                        <div class="row dt-row">
+                            <table class="table table-hover dataTable no-footer">
+                                <thead>
+                                    <tr>
+                                        <td>SR. No</td>
+                                        <td>Branch Details</td>
+                                        <td>IFSC Code</td>
+                                        <td>Account Number</td>
+                                        <td>Passbook/Cancel Cheque</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Axis Bank, Sector 18, Noida</td>
+                                        <td>UTIB0002499</td>
+                                        <td>1234567890</td>
+                                        <td>View</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <hr class="border-dashed">
+                    <p class="fw-bold d-flex align-items-center">Leave</p>
+                    <div class="px-4 row justify-content-between">
+                        <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label class="form-label">Casual Leave</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" placeholder="Casual Leave">
+                            </div>
+                        </div>
+                        <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label class="form-label">Sick Leave / Medical Leave</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" placeholder="Sick Leave / Medical Leave">
+                            </div>
+                        </div>
+                        <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label class="form-label">Maternity Leave</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" placeholder="Maternity Leave">
+                            </div>
+                        </div>
+                        <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label class="form-label">Compensatory Off</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" placeholder="Compensatory Off">
+                            </div>
+                        </div>
+                         <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label class="form-label">Total Monthly Leave</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" value="{{monthlyleave}}" readonly>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="border-dashed">
+                    <p class="fw-bold d-flex align-items-center">Salary Details</p>
+                    <div class="px-4 row justify-content-between">
+                        <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label class="form-label">Basic Salary</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" placeholder="Basic Salary">
+                            </div>
+                        </div>
+                        <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label class="form-label">HRA</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" placeholder="HRA">
+                            </div>
+                        </div>
+                        <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label class="form-label">Conveyance Allowance</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" placeholder="Conveyance Allowance">
+                            </div>
+                        </div>
+                        <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label class="form-label">Other/Special Allowance</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" placeholder="Other/Special Allowance">
+                            </div>
+                        </div>
+                         <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label class="form-label">Gross Salary</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" value="{{grosssalary}}" readonly>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-4 row justify-content-between">
+                        <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label class="form-label">PF</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" placeholder="PF">
+                            </div>
+                        </div>
+                        <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label class="form-label">ESIC</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" placeholder="ESIC">
+                            </div>
+                        </div>
+                        <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label class="form-label">Other Deduction</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" placeholder="Other Deduction">
+                            </div>
+                        </div>
+                        <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label class="form-label">Total Deductions</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" value="{{totaldeductions}}" readonly>
+                            </div>
+                        </div>
+                        
+                         <div class="col-xl-2">
+                            <div class="form-group mb-2">
+                                <label class="form-label">Cash in Hand</label>
+                                <input type="text" class="form-control" id="InvoiceProduct" value="{{cashinhand}}" readonly>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="d-flex justify-content-center gap-2 mt-3">
+                <button class="btn btn-success">Submit</button>
+                <button class="btn btn-primary">Reset</button>
+                <button class="btn btn-danger" (click)="closedForm()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+}

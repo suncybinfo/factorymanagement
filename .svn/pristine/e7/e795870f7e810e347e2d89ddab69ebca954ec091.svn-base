@@ -1,9 +1,0 @@
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-districtmaster',
-  imports: [],
-  templateUrl: './districtmaster.html',
-  styleUrl: './districtmaster.css',
-})
-export class Districtmaster {}

@@ -1,0 +1,23 @@
+<div class="page-header">
+    <div class="page-header-left d-flex align-items-center">
+        <div class="page-header-title">
+            <h5 class="m-b-10"> Procurement (Purchase)</h5>
+        </div>
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/secure/dashboard']">Dashboard</a></li>
+            <li class="breadcrumb-item">Purchase Request</li>
+        </ul>
+    </div>
+    <div class="page-header-right ms-auto">
+        <div class="page-header-right-items">
+            <div class="d-flex align-items-center gap-2 page-header-right-items-wrapper">
+                <div class="dropdown filter-dropdown">
+                    <a class="btn btn-primary" (click)="addRecord()"[class.disabled]="isButtonDisabled" [attr.aria-disabled]="isButtonDisabled" [style.pointer-events]="isButtonDisabled ? 'none' : 'auto'">
+                        <i class="feather-plus me-2"></i>
+                        <span>{{btnname}}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

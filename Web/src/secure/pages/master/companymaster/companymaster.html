@@ -1,0 +1,106 @@
+<div class="page-header">
+    <div class="page-header-left d-flex align-items-center">
+        <div class="page-header-title">
+            <h5 class="m-b-10">Master</h5>
+        </div>
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+            <li class="breadcrumb-item">Company Master</li>
+        </ul>
+    </div>
+    <div class="page-header-right ms-auto">
+        <div class="page-header-right-items">
+            <div class="d-flex align-items-center gap-2 page-header-right-items-wrapper">
+                <div class="dropdown filter-dropdown">
+                    <a class="btn btn-primary" (click)="addRecord()" [class.disabled]="isButtonDisabled"
+                        [attr.aria-disabled]="isButtonDisabled"
+                        [style.pointer-events]="isButtonDisabled ? 'none' : 'auto'">
+                        <i class="feather-plus me-2"></i>
+                        <span>{{btnname}}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if(isform){
+<div class="col-xl-12" style="padding: 10px 10px 0 10px;">
+    <div class="card stretch stretch-full">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-3 mb-3">
+                    <label class="form-label">Company Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Company Name">
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <label class="form-label">Company Short Name<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Company Short Name">
+                </div>
+                <div class="col-lg-3 mb-3 mb-md-0">
+                    <label class="form-label">Country</label>
+                    <select class="form-control">
+                        <option value="public" data-icon="feather-globe">Public</option>
+                        <option value="private" data-icon="feather-lock" selected>Private</option>
+                        <option value="private" data-icon="feather-user">Personal</option>
+                        <option value="customs" data-icon="feather-settings">Customs</option>
+                    </select>
+                </div>
+                <div class="col-lg-3 mb-3 mb-md-0">
+                    <label class="form-label">State <span class="text-danger">*</span></label>
+                    <select class="form-control">
+                        <option value="">Select State</option>
+                        <option value="1">State 1</option>
+                        <option value="2">State 2</option>
+                        <option value="3">State 3</option>
+                    </select>
+                </div>
+                <div class="col-lg-3 mb-3 mb-md-0">
+                    <label class="form-label">District <span class="text-danger">*</span></label>
+                    <select class="form-control">
+                        <option value="">Select Address</option>
+                        <option value="1">Address 1</option>
+                        <option value="2">Address 2</option>
+                        <option value="3">Address 3</option>
+                    </select>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <label class="form-label">Address <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Address">
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <label class="form-label">SPOC Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="SPOC Name">
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <label class="form-label">SPOC Designation <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="SPOC Designation">
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <label class="form-label">SPOC Mobile No. <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="SPOC Mobile No.">
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <label class="form-label">SPOC Email Id <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="SPOC Email Id">
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <label class="form-label">GSTN No.<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="GSTN No.">
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <label class="form-label">PAN No. <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="PAN No.">
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="d-flex justify-content-center gap-2 mt-3">
+                <button class="btn btn-success">Submit</button>
+                <button class="btn btn-primary">Reset</button>
+                <button class="btn btn-danger" (click)="closedForm()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+}

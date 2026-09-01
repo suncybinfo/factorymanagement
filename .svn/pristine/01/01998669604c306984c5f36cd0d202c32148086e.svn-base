@@ -1,9 +1,0 @@
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-plantmaster',
-  imports: [],
-  templateUrl: './plantmaster.html',
-  styleUrl: './plantmaster.css',
-})
-export class Plantmaster {}
